@@ -1,0 +1,26 @@
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
+public class StudentFileReader {
+
+    public static void main(String[] args) {
+        File file = new File("student.txt");
+
+        try (Scanner scanner = new Scanner(file)) {
+            System.out.println("\n--- Student Data ---");
+
+            if (!scanner.hasNextLine()) {
+                System.out.println("The file is empty.");
+            }
+            while (scanner.hasNextLine()) {
+                System.out.println(scanner.nextLine());
+            }
+
+        } catch (FileNotFoundException e) {
+            System.out.println("Error: File 'student.txt' not found. Please make sure the file exists.");
+        } finally {
+            System.out.println("File operation attempted.");
+        }
+    }
+}
